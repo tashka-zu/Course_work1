@@ -1,47 +1,47 @@
 {
-  "greeting": "Добрый день",
+  "greeting": "Добрый вечер",
   "cards": [
     {
       "last_digits": "7197",
-      "total_spent": 3457.94,
-      "cashback": 34.58
+      "total_spent": 6762.86,
+      "cashback": 67.63
     },
     {
       "last_digits": "4556",
-      "total_spent": 9482.0,
-      "cashback": 94.82
+      "total_spent": 300.0,
+      "cashback": 3.0
     }
   ],
   "top_transactions": [
     {
-      "date": "10-07-2020 18:55:41",
-      "amount": 30000.0,
+      "date": "10-07-2021 23:13:54",
+      "amount": 6380.0,
       "category": "Пополнения",
       "description": "Перевод с карты"
     },
     {
-      "date": "07-07-2020 12:12:48",
-      "amount": 6700.0,
-      "category": "Пополнения",
-      "description": "Тинькофф"
+      "date": "09-07-2021 20:17:35",
+      "amount": -20.0,
+      "category": "Фастфуд",
+      "description": "IP Yakubovskaya M.V."
     },
     {
-      "date": "11-07-2020 16:42:42",
-      "amount": 2000.0,
-      "category": "Пополнения",
-      "description": "Тинькофф"
+      "date": "02-07-2021 14:19:20",
+      "amount": -26.9,
+      "category": "Супермаркеты",
+      "description": "Prisma"
     },
     {
-      "date": "05-07-2020 17:11:51",
-      "amount": 300.0,
-      "category": "Переводы",
-      "description": "Артем П."
+      "date": "04-07-2021 15:38:34",
+      "amount": -30.0,
+      "category": "Услуги банка",
+      "description": "Комиссия за операцию"
     },
     {
-      "date": "09-07-2020 09:40:21",
-      "amount": 300.0,
-      "category": "Пополнения",
-      "description": "Перевод с карты"
+      "date": "09-07-2021 23:42:35",
+      "amount": -57.0,
+      "category": "Супермаркеты",
+      "description": "Produkty 24"
     }
   ],
   "currency_rates": [
@@ -57,23 +57,23 @@
   "stock_prices": [
     {
       "stock": "AAPL",
-      "price": 18865.22
+      "price": "Ошибка получения данных для AAPL"
     },
     {
       "stock": "AMZN",
-      "price": 16516.02
+      "price": "Ошибка получения данных для AMZN"
     },
     {
       "stock": "GOOGL",
-      "price": 13232.36
+      "price": "Ошибка получения данных для GOOGL"
     },
     {
       "stock": "MSFT",
-      "price": 32199.54
+      "price": "Ошибка получения данных для MSFT"
     },
     {
       "stock": "TSLA",
-      "price": 23825.67
+      "price": "Ошибка получения данных для TSLA"
     }
   ]
 }
