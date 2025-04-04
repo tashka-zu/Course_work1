@@ -1,0 +1,79 @@
+{
+  "greeting": "Добрый день",
+  "cards": [
+    {
+      "last_digits": "7197",
+      "total_spent": 3457.94,
+      "cashback": 34.58
+    },
+    {
+      "last_digits": "4556",
+      "total_spent": 9482.0,
+      "cashback": 94.82
+    }
+  ],
+  "top_transactions": [
+    {
+      "date": "10-07-2020 18:55:41",
+      "amount": 30000.0,
+      "category": "Пополнения",
+      "description": "Перевод с карты"
+    },
+    {
+      "date": "07-07-2020 12:12:48",
+      "amount": 6700.0,
+      "category": "Пополнения",
+      "description": "Тинькофф"
+    },
+    {
+      "date": "11-07-2020 16:42:42",
+      "amount": 2000.0,
+      "category": "Пополнения",
+      "description": "Тинькофф"
+    },
+    {
+      "date": "05-07-2020 17:11:51",
+      "amount": 300.0,
+      "category": "Переводы",
+      "description": "Артем П."
+    },
+    {
+      "date": "09-07-2020 09:40:21",
+      "amount": 300.0,
+      "category": "Пополнения",
+      "description": "Перевод с карты"
+    }
+  ],
+  "currency_rates": [
+    {
+      "currency": "USD",
+      "rate": 84.26
+    },
+    {
+      "currency": "EUR",
+      "rate": 91.42
+    }
+  ],
+  "stock_prices": [
+    {
+      "stock": "AAPL",
+      "price": 18865.22
+    },
+    {
+      "stock": "AMZN",
+      "price": 16516.02
+    },
+    {
+      "stock": "GOOGL",
+      "price": 13232.36
+    },
+    {
+      "stock": "MSFT",
+      "price": 32199.54
+    },
+    {
+      "stock": "TSLA",
+      "price": 23825.67
+    }
+  ]
+}
