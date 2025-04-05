@@ -9,10 +9,8 @@ def load_excel_data(input_file="../data/operations.xlsx"):
     try:
         df = pd.read_excel(input_file, engine="openpyxl")
 
-        # Убираем строки, где нет номера карты
         df = df.dropna(subset=["Номер карты"])
 
-        # Преобразуем DataFrame в список словарей
         data = df.to_dict(orient="records")
 
         logging.info(f"Successfully read the file: {input_file}, {len(data)} rows loaded.")
@@ -20,9 +18,6 @@ def load_excel_data(input_file="../data/operations.xlsx"):
     except Exception as e:
         logging.error(f"Error reading xlsx file {input_file}: {e}")
         return []
-
-
-# print(read_xlsx("../data/operations.xlsx"))
 
 
 def load_json_data(file_path):
@@ -34,8 +29,11 @@ def load_json_data(file_path):
     except Exception as e:
         return []
 
-#Фильтрует данные из Excel файла
-def filter_data_by_date(date_str, input_file="../data/operations.xlsx", output_file="../data/filtered_operations.json"):
+
+# Фильтрует данные из Excel файла
+def filter_data_by_date(
+    date_str, input_file="../data/operations.xlsx", output_file="../data/filtered_operations.json"
+):
     """Фильтрует данные из Excel файла по дате и сохраняет результаты в новый JSON файл"""
     df = pd.read_excel(input_file, engine="openpyxl")
     df.dropna(subset=["Номер карты"])
