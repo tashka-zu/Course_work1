@@ -1,5 +1,5 @@
 {
-  "greeting": "Добрый вечер",
+  "greeting": "Доброе утро",
   "cards": [
     {
       "last_digits": "7197",
@@ -47,33 +47,33 @@
   "currency_rates": [
     {
       "currency": "USD",
-      "rate": 84.26
+      "rate": 84.56
     },
     {
       "currency": "EUR",
-      "rate": 91.42
+      "rate": 92.89
     }
   ],
   "stock_prices": [
     {
       "stock": "AAPL",
-      "price": "Ошибка получения данных для AAPL"
+      "price": 0.0
     },
     {
       "stock": "AMZN",
-      "price": "Ошибка получения данных для AMZN"
+      "price": 0.0
     },
     {
       "stock": "GOOGL",
-      "price": "Ошибка получения данных для GOOGL"
+      "price": 0.0
     },
     {
       "stock": "MSFT",
-      "price": "Ошибка получения данных для MSFT"
+      "price": 0.0
     },
     {
       "stock": "TSLA",
-      "price": "Ошибка получения данных для TSLA"
+      "price": 0.0
     }
   ]
 }

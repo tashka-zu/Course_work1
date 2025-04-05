@@ -1,5 +1,7 @@
 import json
+
 import pandas as pd
+
 from src.services import search_and_save_dataframe_to_json
 
 example_data = pd.DataFrame(
@@ -12,6 +14,7 @@ example_data = pd.DataFrame(
         "Сумма": [1000, 500],
     }
 )
+
 
 def test_re_sort_with_valid_data():
     result_file = search_and_save_dataframe_to_json(example_data, "Маг", output_file="search_results.json")
@@ -30,6 +33,7 @@ def test_re_sort_with_valid_data():
         else:
             break
 
+
 def test_re_sort_with_empty_data():
     df = pd.DataFrame()
 
@@ -41,6 +45,7 @@ def test_re_sort_with_empty_data():
         result = json.load(f)
 
     assert result == []
+
 
 def test_re_sort_with_no_matching_data():
     df = pd.DataFrame(

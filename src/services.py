@@ -4,8 +4,7 @@ import re
 
 import pandas as pd
 
-
-#Настройки логирования
+# Настройки логирования
 logging.basicConfig(
     filename="../logs/search.log",
     level=logging.INFO,
@@ -16,7 +15,7 @@ logging.basicConfig(
 )
 
 
-#Функция для поиска совпадений
+# Функция для поиска совпадений
 def search_and_save_dataframe_to_json(df, search, output_file="../data/search_results.json"):
     """Функция для поиска совпадений в DataFrame по заданному шаблону"""
     logging.info(f"Начат поиск по DataFrame с критерием поиска: {search}")
@@ -25,7 +24,7 @@ def search_and_save_dataframe_to_json(df, search, output_file="../data/search_re
         df = pd.DataFrame(df)
 
     if df is None or df.empty:
-        logging.warning(f"DataFrame пуст или не загружен.")
+        logging.warning("DataFrame пуст или не загружен.")
         result = []
     else:
         if not isinstance(df, pd.DataFrame):
@@ -50,7 +49,3 @@ def search_and_save_dataframe_to_json(df, search, output_file="../data/search_re
     logging.info(f"Результат ({len(result)} совпадений) записан в {output_file}.")
 
     return output_file
-
-
-# df = read_xlsx("../data/operations.xlsx")
-# re_sort(df, "Супермаркеты")
