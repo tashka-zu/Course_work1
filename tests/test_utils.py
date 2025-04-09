@@ -1,28 +1,43 @@
-import json
-from unittest.mock import mock_open
-from src.utils import load_json_data
+from unittest.mock import mock_open, patch
 
-fake_data = [{"id": 1, "name": "Item 1"}, {"id": 2, "name": "Item 2"}]
+import pandas as pd
 
-def test_read_json_successfully(mocker):
-    mocker.patch("src.utils.open", mock_open(read_data=json.dumps(fake_data)))
+from src.utils import filter_data_by_date, load_excel_data
 
-    result = load_json_data("path/to/file.json")
 
-    assert result == fake_data
+def test_load_excel_data_successfully(mocker):
+    fake_data = pd.DataFrame(
+        {"Номер карты": [123456, 789012], "Дата операции": ["01.01.2025 12:00:00", "02.01.2025 13:00:00"]}
+    )
 
-def test_read_json_fails_on_exception(mocker):
-    mocker.patch("src.utils.open", mock_open())
+    mocker.patch("pandas.read_excel", return_value=fake_data)
 
-    mocker.patch("json.load", side_effect=Exception("JSON decoding error"))
+    result = load_excel_data("path/to/file.xlsx")
 
-    result = load_json_data("path/to/file.json")
+    expected_data = fake_data.to_dict(orient="records")
+    assert result == expected_data
 
-    assert result == []
 
-def test_read_json_empty_file(mocker):
-    mocker.patch("src.utils.open", mock_open(read_data=""))
+def test_load_excel_data_fails_on_exception(mocker):
+    mocker.patch("pandas.read_excel", side_effect=Exception("Excel reading error"))
 
-    result = load_json_data("path/to/file.json")
+    result = load_excel_data("path/to/file.xlsx")
 
     assert result == []
+
+
+def test_filter_data_by_date(mocker):
+    fake_data = pd.DataFrame(
+        {"Номер карты": [123456, 789012], "Дата операции": ["01.01.2025 12:00:00", "02.01.2025 13:00:00"]}
+    )
+
+    mocker.patch("pandas.read_excel", return_value=fake_data)
+
+    mocker.patch("pandas.to_datetime", side_effect=pd.to_datetime)
+
+    m = mock_open()
+    with patch("builtins.open", m):
+        result_file = filter_data_by_date("01.01.2025 12:00:00")
+
+    m.assert_called_with("../data/filtered_operations.json", "w", encoding="utf-8", errors="strict", newline="")
+    assert result_file == "../data/filtered_operations.json"

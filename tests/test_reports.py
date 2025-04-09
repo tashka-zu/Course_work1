@@ -1,6 +1,10 @@
-import json
+from unittest.mock import mock_open, patch
+
 import pandas as pd
 import pytest
+
+from src.reports import analyze_spending_by_category
+
 
 @pytest.fixture(scope="module")
 def transactions():
@@ -12,6 +16,7 @@ def transactions():
         }
     )
 
+
 @pytest.mark.parametrize(
     "expected",
     [
@@ -19,25 +24,25 @@ def transactions():
     ],
 )
 def test_spending_by_category_food(transactions, expected):
-    with open("../Course_work1/report_decor.json", "r", encoding="utf-8") as file:
-        data_from_file = json.load(file)
+    with patch("builtins.open", mock_open()):
+        result = analyze_spending_by_category(transactions, "Еда", "01.01.2025")
+        pd.testing.assert_frame_equal(result.reset_index(drop=True), expected.reset_index(drop=True))
 
-    actual_result = pd.DataFrame(data_from_file, columns=["Категория", "Сумма трат"])
-    actual_result = actual_result[actual_result["Категория"] == "Еда"]
 
-    pd.testing.assert_frame_equal(actual_result.reset_index(drop=True), expected.reset_index(drop=True))
+def test_spending_by_category_no_data(transactions):
+    with patch("builtins.open", mock_open()):
+        result = analyze_spending_by_category(transactions, "Несуществующая категория", "01.01.2025")
+        expected_result = pd.DataFrame(
+            {"Категория": pd.Series([], dtype="object"), "Сумма трат": pd.Series([], dtype="object")}
+        )
+        pd.testing.assert_frame_equal(result.reset_index(drop=True), expected_result.reset_index(drop=True))
 
-@pytest.mark.parametrize(
-    "expected",
-    [
-        pd.DataFrame({"Категория": ["Такси"], "Сумма трат": [2089]}),
-    ],
-)
-def test_spending_by_category_taxi(transactions, expected):
-    with open("../Course_work1/report_decor.json", "r", encoding="utf-8") as file:
-        data_from_file = json.load(file)
 
-    actual_result = pd.DataFrame(data_from_file, columns=["Категория", "Сумма трат"])
-    actual_result = actual_result[actual_result["Категория"] == "Такси"]
-
-    pd.testing.assert_frame_equal(actual_result.reset_index(drop=True), expected.reset_index(drop=True))
+def test_spending_by_category_invalid_date(transactions):
+    # Проверяем сценарий с некорректной датой
+    with patch("builtins.open", mock_open()):
+        result = analyze_spending_by_category(transactions, "Еда", "invalid_date")
+        if result is not None:
+            assert result.empty
+        else:
+            pytest.fail("Функция возвращет значение None, когда ожидается Data Frame")
